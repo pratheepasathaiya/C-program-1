@@ -1,0 +1,33 @@
+#include <stdio.h>
+
+int main() {
+    int t;
+    char r, c, type;
+    float price, cost;
+
+    scanf("%d %c %c %c", &t, &r, &c, &type);
+
+    if (t < 5 || t > 40) {
+        printf("Minimum of 5 and Maximum of 40 Tickets\n");
+        return 0;
+    }
+
+    if (type == 'k')
+        price = 75;
+    else if (type == 'q')
+        price = 150;
+    else {
+        printf("Invalid Input\n");
+        return 0;
+    }
+
+    cost = t * price;
+
+    if (t > 20) cost *= 0.9;       // 10% discount
+    if (c == 'y' || c == 'Y') cost *= 0.98; // 2% coupon
+
+    if (r == 'y' || r == 'Y') cost += t * 50; // Refreshments
+
+    printf("Ticket cost:%.2f\n", cost);
+    return 0;
+}
